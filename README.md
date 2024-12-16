@@ -72,13 +72,26 @@ Overall, I think it works quite well. You can use it to make recreating sheet mu
 1. (Only needs to be run once after downloading from GitHub) run ScrapeInstruments.py and ProcessInstruments.py one time each (will take a while)
    ```
    pip3 install -r requirements.txt
+   pip3 install pydub  # For audio format conversion
 
    python3 ScrapeInstruments.py
    python3 ProcessInstruments.py
    ```
    InstrumentAudioFiles and InstrumentData should now be filled
-3. Upload filetypes that soundfile.read() can process to the In folder
-4. Go into Main.py and change any parameters, primarily the whitelist or blacklist of instruments for the song
-5. Run Main.py
+
+2. Prepare your audio files:
+   - For WAV files: Place them directly in the `In` folder
+   - For other formats (MP3, M4A, OGG): 
+     - Place them in the `OtherFormat` folder
+     - Run the converter:
+       ```
+       python3 audio_format_convertor.py
+       ```
+     - Converted WAV files will appear in the `In` folder
+
+3. Go into Main.py and change any parameters, primarily the whitelist or blacklist of instruments for the song
+
+4. Run Main.py
    PlayBack should now have a file for each input
-7. Run Display.py to see results!
+
+5. Run Display.py to see results!
